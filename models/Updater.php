@@ -152,7 +152,7 @@ class Updater{
 
     private static function updateEventStats($ids){
 
-        $sql = "INSERT INTO regmod.statistics_events
+        $sql = "INSERT INTO regmod.statistics_events (event_id, idx, event_mean, cru_mean) (
                   SELECT CC.event_id,
                            CC.average AS idx,
                            (ST_SUMMARYSTATS(BB.rast)).mean AS event_mean,
@@ -162,7 +162,7 @@ class Updater{
                     INNER JOIN events_timespace AS CC
                     ON BB.event_id = CC.event_id
                     WHERE AA.month = CC.month AND
-                    BB.event_id IN (".$ids.");";
+                    BB.event_id IN (".$ids."));";
 
         $command = Yii::$app->db->createCommand($sql);
         $command->execute();
@@ -171,7 +171,7 @@ class Updater{
 
     private static function updateStationStats($ids){
 
-        $sql = "INSERT INTO regmod.statistics_ghcnm
+        $sql = "INSERT INTO regmod.statistics_ghcnm (event_id, idx, year, month, ghcnm_temperature, event_atghcnm_temperature, station_id, name)(
                   SELECT event_id, average AS idx, station.year,
 		            station.month,
                     station.temperature AS ghcnm_temperature,
@@ -194,7 +194,7 @@ class Updater{
                           AND station.month = reconevent.month
                           AND ST_INTERSECTS(reconevent.rast, station.geom)
                           AND ST_VALUE(reconevent.rast, station.geom) IS NOT NULL
-			              AND reconevent.event_id IN (".$ids.");";
+			              AND reconevent.event_id IN (".$ids."));";
 
         $command = Yii::$app->db->createCommand($sql);
         $command->execute();
