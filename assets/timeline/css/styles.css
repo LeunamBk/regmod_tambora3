@@ -1,0 +1,67 @@
+svg {
+    font: 10px sans-serif;
+    float:right;
+}
+
+.line {
+    stroke-width: 1;
+    fill: none;
+    clip-path: url(#clip);
+}
+
+.area {
+    clip-path: url(#clip);
+    stroke-width: 0;
+    opacity: 0.7;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.brush .extent {
+    stroke: #fff;
+    fill-opacity: .125;
+    shape-rendering: crispEdges;
+}
+
+/* Statistic lines */
+/*
+.meanline {
+stroke: blue;
+fill: none;
+stroke-width: 1;
+clip-path: url(#clip);
+}
+*/
+.meanline-label {
+    stroke-width: 1;
+    font-size: 12px;
+}
+/*
+.sdline {
+stroke: red;
+fill: none;
+stroke-width: 1;
+stroke-dasharray: 5,10;
+clip-path: url(#clip);
+}
+*/
+.sdline-label {
+    stroke-width: 1;
+    font-size: 12px;
+}
+
+.count-label {
+    stroke-width: 1;
+    font-size: 12px;
+}
+
+.label {
+    fill: black;
+    stroke-width: 1;
+    font-size: 12px;
+}

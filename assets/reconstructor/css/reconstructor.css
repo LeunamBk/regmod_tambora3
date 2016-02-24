@@ -1,0 +1,136 @@
+#reconstructor-form {
+    padding-top:1px;
+    font-family: 'Fauna One', serif;
+}
+
+#form{
+    border-radius:2px;
+    padding: 15px 15px;
+    box-shadow:0 0 15px;
+    font-size:14px;
+    font-weight:bold;
+    width:375px;
+    margin:20px 50px 0 0px;
+    float:left;
+}
+
+#yearSel{
+    width:25%;
+    margin-left:1%;
+}
+
+#yearLable{
+    margin-left:5%;
+}
+/*
+
+input{
+    width:100%;
+    height:23px;
+    border:1px solid #999;
+    border-radius:3px;
+}
+*/
+#recon-submit{
+    height:35px;
+    margin-top:5px;
+    padding:5px;
+    background-color:#123456;
+    border:1px solid white;
+    font-family: 'Fauna One', serif;
+    font-Weight:bold;
+    font-size:18px;
+    color:white;
+    width:92%;
+}
+
+textarea{
+    width:100%;
+    height:80px;
+    margin-top:5px;
+    border-radius:3px;
+    padding:5px;
+    resize:none;
+}
+/*
+span{
+    color:red
+}
+*/
+
+#note{
+    color:black;
+    font-Weight:400;
+}
+
+#returnmessage{
+    font-size:14px;
+    color:green;
+    text-align:center;
+}
+
+#reconstructor-form .table{
+    table-layout: fixed;
+}
+
+#reconstructor-form .table th, #reconstructor-form .table td {
+    overflow: hidden;
+    width: 33px;
+}
+
+#reconstructor-form .table td:nth-child(1), #reconstructor-form .table th:nth-child(1){
+    width:90px;
+}
+
+#reconstructor-form .table td:nth-child(2),#reconstructor-form .table th:nth-child(2)  {
+    width: 46px;
+}
+
+#reconstructor-form .table td:nth-child(3),#reconstructor-form .table th:nth-child(3)  {
+    width: 46px;
+}
+
+.table-editable {
+    position: relative;
+
+}
+
+.table-remove {
+    color: #700;
+    cursor: pointer;
+
+}
+
+.table-up, .table-down {
+    color: #007;
+    cursor: pointer;
+
+}
+
+.table-add {
+    color: #070;
+    cursor: pointer;
+    position: absolute !important;
+    top: 10px !important;
+    right: 3px;
+}
+
+#reconstructor-form th, #reconstructor-form td{
+    border-top:1px solid black;
+}
+
+.required{
+    color:red;
+    font-weight: bold;
+}
+
+/*marker pins from geocomplete suggestion list*/
+.pac-icon {
+    width: 0;
+    background-image: none;
+}
+
+/*autosuggestion width*/
+.pac-container {
+    width: 340px !important;
+}

@@ -1,0 +1,315 @@
+#old_browser_msg {
+    display: none;
+    float: right;
+    clear: right;
+    width: 500px;
+    color: white;
+    background: #D53E4F;
+    border: 1px solid #9E0142;
+    padding: 5px;
+    margin-right: 24px;
+}
+
+#century {
+    clear: all;
+}
+#decade {
+    clear: all;
+}
+#year {
+    clear: all;
+}
+#month {
+    clear: all;
+}
+
+.selBorder {
+    
+}
+
+#advancedSelect{
+    border: 1px solid #f5f5f5;
+    border-radius:10px;
+    box-shadow:0 0 15px;
+    padding-left:15px;
+    background-color:#ddd;
+    margin-bottom:10px;
+}
+
+#timeline svg{
+    width:100%;
+    border: 1px solid #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 0 15px;
+    background-color: #ddd;
+}
+
+#tiles {
+    font-size: 12px;
+    clear: both;
+}
+
+#tiles th {
+    vertical-align: middle;
+    padding: 2px;
+    color: black;
+    font-style: italic;
+    font-weight: bold;
+}
+
+th.h7, th.h8, th.h9, th.h10, th.h11, th.h12, th.h13, th.h14, th.h15, th.h16, th.h17, th.h18, th.h19 {
+    color: #444 !important;
+}  
+
+#tiles tr th {
+    padding-top: 9px;
+}
+
+#tiles tr:first-child th {
+    padding-top: 3px;
+}
+
+#tiles td {
+    -webkit-perspective: 1000;
+}
+
+#tiles .tile {
+    width: 25px;
+    height: 25px;
+    position: relative;
+    -webkit-transform-style: preserve-3d;          
+    -webkit-transition: 0.7s;
+}
+
+.face {
+    position: absolute;
+    -webkit-backface-visibility: hidden;      
+    width: 22px;
+    height: 22px;
+    background: #eee;
+    border: 1px solid white;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+#tiles td.sel .face {
+    border-color: black;
+}
+
+#tiles td.clickSel .face {
+    border: 2px solid red;
+}
+
+.face.hidden {
+    display: none;
+}
+
+#tiles td.dim .screen {
+    opacity: 0.6;
+}
+
+.face.back {
+    -webkit-transform: rotateY(180deg);    
+}
+
+.tile .screen {
+    background: white;
+    opacity: 0.0;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    z-index: 1337;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid white;
+}
+
+#legend {
+    clear: left;
+    margin-left: 0px;
+    width: 280px;
+    color: #777;
+    margin-top: 10px;
+    background: #ddd;
+    /*border: 1px solid #f5f5f5;*/
+    overflow: hidden;
+    padding: 5px 7px;
+    /*-moz-border-radius: 3px;
+    border-radius: 3px;*/
+    font-size: 11px;
+    line-height: 11px;
+    margin-bottom: 10px;
+    margin-right: 24px;
+}
+
+
+#legend ul {
+    list-style-type: none;
+    overflow: hidden;
+    clear: both;
+    margin-left:17px;
+}
+
+#legend li {
+    float: left;
+    margin-right: 1px;
+    width: 14px;
+    height: 14px;
+}
+
+.more{
+    width: 50px !important;
+    margin-left: 5px;
+    line-height: 14px;
+}
+
+.less{
+    width: 50px !important;
+    line-height: 14px;
+}
+
+#legend p {
+    margin-top: 3px;
+}
+
+#legend p.more {
+    float: right;
+}
+
+#legend p.less {
+    float: left;
+}
+
+#wtf {
+    float: left;
+    width: 515px;
+}
+
+#wtf .title {
+    background: #fdf;
+}
+
+/* 11 buckets purple to red */
+
+.rbow2 .q1-11 {
+    background: #5E4FA2;
+    /*
+    border-left-color: #5b40b3;
+    border-top-color: #5b40b3;
+    border-right-color: #3e2b7a;
+    border-bottom-color: #3e2b7a;
+    */
+}
+
+.rbow2 .q2-11 {
+    background: #3288BD;
+}
+
+.rbow2 .q3-11 {
+    background: #66C2A5;
+}
+
+.rbow2 .q4-11 {
+    background: #ABDDA4;
+}
+
+.rbow2 .q5-11 {
+    background: #E6F598;
+}
+
+.rbow2 .q6-11 {
+    background: #FFFFBF;
+    background: #f6faaa;
+    /*border-color: #f6faaa;*/
+}
+
+.rbow2 .q7-11 {
+    background: #FEE08B;
+}
+
+.rbow2 .q8-11 {
+    background: #FDAE61;
+}
+
+.rbow2 .q9-11 {
+    background: #F46D43;
+}
+
+.rbow2 .q10-11 {
+    background: #D53E4F;
+}
+
+.rbow2 .q11-11 {
+    background: #9E0142;
+}        
+
+/* 7 buckets grey to black */
+.rbow2 .q1-7 {
+    background: #ffffb2;
+}
+
+.rbow2 .q2-7 {
+    background: #fed976;
+}
+
+.rbow2 .q3-7 {
+    background: #feb24c;
+}
+
+.rbow2 .q4-7 {
+    background: #fd8d3c;
+}
+
+.rbow2 .q5-7 {
+    background: #fc4e2a;
+}
+
+.rbow2 .q6-7 {
+    background: #e31a1c;
+
+}
+
+.rbow2 .q7-7 {
+    background: #b10026;
+}
+
+.more {
+    float:left;
+}
+
+.less {
+    float:left;
+}
+
+/*
+css for cubic even spaced and width tile select menu
+
+#decade .tile {
+height: 25px;
+position: relative;
+width: 30px  !important;  
+}
+
+#decade .face{
+width: 27px  !important;  
+}   
+#year .tile {
+height: 25px;
+position: relative;
+width: 30px  !important;  
+}
+
+#year .face{
+width: 27px  !important;  
+}   
+
+#century .tile {
+height: 25px;
+position: relative;
+width: 33px  !important;  
+}
+
+#century .face{
+width: 30px  !important;  
+}   
+*/

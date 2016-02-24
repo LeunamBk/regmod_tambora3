@@ -1,0 +1,607 @@
+/*----------------------------------------------------------------------------- 
+[client] Screen Stylesheet 
+
+version:   1.0 
+date:      01/03/15 
+author:    [manuel beck] 
+email:     [manuelbeck@outlook.com] 
+website:   [tambora.org] 
+@import url("typography.css");
+
+/* Remove padding and margin */ 
+
+*  
+{ 
+    margin: 0; 
+    padding: 0; 
+    border: 0; 
+}
+
+.clear 
+{ 
+    clear:both;
+} 
+
+body 
+{ 
+    font: 62.5%/1.5  "Lucida Grande", "Lucida Sans", Tahoma, Verdana, sans-serif; 
+    color: #000000;     
+    text-align:center; 
+} 
+
+#wrapper 
+{  
+    width:99%;  
+    text-align:left;   
+    margin-left:auto;  
+    margin-right:auto;  
+    /*background-color: #FFFFFF;*/ 
+    box-sizing: unset !important;
+}
+
+/* override default bootsrap css box sizing*/
+#wrapper *,
+#wrapper *:before,
+#wrapper *:after {
+    -webkit-box-sizing: unset !important;
+    -moz-box-sizing: unset !important;
+    box-sizing: unset !important;
+}
+
+h1 
+{ 
+    font-size: 2.2em; 
+} 
+
+h2 
+{ 
+    font-size: 1.9em;
+    /*to reset bootstrap 20px margin*/
+    margin-top:0px !important;     
+} 
+
+h3 
+{ 
+    font-size: 1.8em; 
+    margin-top:10px !important; 
+} 
+
+h4 
+{ 
+    font-size: 1.6em;     
+} 
+
+h5 
+{ 
+    font-size: 1.4em;     
+} 
+
+p 
+{ 
+    font-size: 1.2em;     
+}
+
+sub, sup {
+    /* Specified in % so that the sup/sup is the right size relative to the surrounding text */
+    font-size: 75%;
+
+    /* Zero out the line-height so that it doesn't interfere with the positioning that follows */
+    line-height: 0;
+
+    /* Where the magic happens: makes all browsers position the sup/sup properly, relative to the surrounding text */
+    position: relative;
+
+    /* Note that if you're using Eric Meyer's reset.css, this is already set and you can remove this rule */
+    vertical-align: baseline;
+}
+
+sup {
+    /* Move the superscripted text up */
+    top: -0.5em;
+}
+
+sub {
+    /* Move the subscripted text down, but only half as far down as the superscript moved up */
+    bottom: -0.25em;
+}
+
+
+/* Header 
+
+/* Footer 
+
+/* Your template 
+
+input.text 
+{ 
+padding: 3px; 
+border: 1px solid #999999;     
+}
+
+/* Sections  
+-----------------------------------------------------------------------------*/ 
+
+
+#head .navTiles{
+    height:100%;
+    float:left;
+    width:33%;
+    background-color: #e8eaeb;
+    border-bottom:1px solid black; ;
+    border-left:1px solid black; ;
+    border-right:1px solid black; ;
+
+}
+#head .navTilesMid{
+    height:100%;
+    float:left;
+    width:30%;
+    background-color: #e8eaeb;
+    /*    border: 1px solid black;  */
+
+}
+
+.navTiles a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+
+    }.navTilesMid a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+
+}
+
+#top .left{
+    float:left;
+    width: 372px;
+    margin-top: 15px;
+}
+
+#top .right{
+    float:left;
+    width:66%;
+    margin-right:1%;
+    margin-top: 10px;
+}
+
+#bottom .left {
+    float: left;
+    margin-left: 1%;
+    padding-top: 5px;
+    width: 28.5%;
+}
+
+#bottom .center {
+    float: left;
+    margin-left: 1%;
+    padding-top: 5px;
+    width: 40%;
+
+}
+
+#bottom .right {
+    float: right;
+    width: 31%;
+    padding-top: 10px;
+    margin-right: 1%;
+    margin-left: 1%;
+
+    /* background-color: gray;        */
+}
+#bottom .twoThird {
+    float: right;
+    width: 65%;
+    padding-top: 5px;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+/* Tables  
+-----------------------------------------------------------------------------*/ 
+
+#advancedSelect #century {
+    margin-top: 5%;
+}
+
+#decade, #year, #month {
+    margin-top: 1%;
+}
+
+/* Elements
+-----------------------------------------------------------------------------*/ 
+#map {
+    position:absolute;
+    /*top: 30px; if navigation is displayed*/
+    margin-left:1%;
+
+}
+
+
+#minimap {
+    float: right;
+    width: 45%;
+    height: 250px;    
+}
+#randomdottext{
+
+}
+#select{
+    float:left;
+    width:48%;
+}
+
+#container {
+    float:left;
+    height:230px;
+    width:100%;
+
+}
+
+#hiddenfield {
+    /*display: none;*/
+}
+
+.custom-select, .timeSelect {
+    border: 1px solid #CCC;
+    border-radius: 0;
+    @include appearance(none); /* Compass helper*/
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 10px;
+    width: 75%;
+    color: #666;
+}
+
+.loading {
+    float:left;
+    position:   relative;
+    z-index:    1;
+    top:        200px;
+    left:       49%;
+}
+
+#eventCount, #locationCount {
+    color:orange;    
+}
+
+#bbSelect {
+    margin-top:3%;
+}
+
+.greyoutoverlay {
+    background: black;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.7;
+    z-index:8888;
+}
+
+.sidebar{
+    border: 1px solid #f5f5f5;
+    border-radius:10px;
+    box-shadow:0 0 15px;
+    padding-left:15px;
+    background-color:#ddd;
+    margin-bottom:10px;
+}
+
+.stationInlineDescription{
+    display:none;
+}
+/* Leaflet Elements
+-----------------------------------------------------------------------------*/ 
+
+.legend {
+    line-height: 18px;
+    color: #555;
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    font: 14px/18px Arial,Helvetica,sans-serif;
+    padding: 6px 8px;
+}
+
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+
+#legendTitle {
+    text-align: center;
+    margin-bottom: 15px;
+    font-variant: small-caps;
+}
+.symbolsContainer {
+    float: left;
+    margin-left: 50px;
+}
+.legendCircle {
+    border-radius:50%; 
+    border: 1px solid black; 
+    background: #ffffbf;
+    margin: 4px auto 0;
+    display: inline-block;
+    opacity: 0.5;
+}
+.legendValue {
+    position: absolute;
+    right: 8px;
+    color:black;
+    font-weight: bold;
+}
+
+.temporal-legend {
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    overflow: auto;
+}
+
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+
+#button1{
+    margin-top:3%;
+    width:75%;
+    height:45px;
+}
+
+#bbSelect {border-color: black; background-color: grey; }
+
+#bbSelect:hover {background-color: #bdbdbd; }
+
+/*contour Layer*/
+.leaflet-zoom-animated{
+    z-index:2;
+}
+
+/*image contour Layer*/
+.leaflet-image-layer{
+    z-index:1;
+}
+
+/*Reactive Elements*/
+tr.highlight-info{
+
+    color: #7CB5EC;   
+    font-weight: bold;
+
+}
+
+/*+############legend 2*/
+
+.legendIdx {
+    line-height: 20px;
+    color: #555;
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    font: 14px/18px Arial,Helvetica,sans-serif;
+    padding: 6px 8px;
+    margin-right: 115px !important;
+    margin-bottom: -211px !important;
+    top:130px;
+    left:0px;
+}
+.legendIdx .circle {
+    border-radius: 50%;
+    border:1px solid black;
+    width: 12px;
+    height: 12px;
+    margin-top: 2px;
+}
+
+.legendIdx i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+
+/*################# legend horizontal*/
+.legendHz span, .legendHz label {
+    display: block;
+    width: 12px;
+    height: 18px;
+    float: left;
+    opacity: 0.7;
+    text-align: center;
+    font-size: 80%
+}
+
+/*########################## header navigation*/ 
+.navi ul {
+    list-style: none;
+    background-color: #444;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    margin-bottom:10px;
+    width:100%;
+    border: 1px solid #f5f5f5;
+    border-radius:10px;
+    box-shadow:0 0 15px;
+}
+
+.navi ul a:hover {
+    text-decoration: none;
+    color: black;
+    background-color: #fff;
+}
+
+.navi ul li:first-child a:hover {
+    background-color: #fff;
+    border-bottom-left-radius:9px;
+    border-top-left-radius:9px; 
+    margin-left:-3px;
+}
+
+.navi ul li:last-child a:hover {
+    background-color: #fff;
+    border-bottom-right-radius:9px;
+    border-top-right-radius:9px;
+}
+
+.navi ul li:first-child a.active {
+    background-color: #fff;
+    border-bottom-left-radius:9px;
+    border-top-left-radius:9px;
+    /* border: 1px solid #f5f5f5; */
+    color: #444;
+    cursor: default;
+    margin-left:-5px;
+
+}
+
+.navi ul li:last-child a.active {
+    background-color: #fff;
+    border-bottom-right-radius:9px;
+    border-top-right-radius:9px;
+    color: #444;
+    cursor: default;
+}
+
+.navi a.active {
+    background-color: #fff;
+    color: #444;
+    cursor: default;
+    text-decoration: none;
+}
+
+@media screen and (min-width: 1000px) {
+    
+.navi ul li:first-child {
+    width: 25%;
+    border-bottom: none;
+    height: 100%;
+    line-height: 25px;
+    font-size: 1.0em;
+}
+
+.navi ul li {
+    vertical-align: middle;
+    display: inline-block;
+    width: 25%;
+    border-bottom: none;
+    height: 100%;
+    line-height: 50px;
+    font-size: 1.0em;
+}
+
+/* Option 1 - Display Inline */
+.navi ul li {
+    display: inline-block;
+    margin-right: -4px;
+}
+
+/* Options 2 - Float
+.nav li {
+float: left;
+}
+.nav ul {
+overflow: auto;
+width: 600px;
+margin: 0 auto;
+}
+.nav {
+background-color: #444;
+}
+*/
+}
+
+
+.navi ul li a { 
+    display: block; 
+    color: white;
+}
+
+.navi ul ul {
+    display: none;
+}
+
+.navi ul li:hover > ul {
+    display: block;
+
+}
+
+.navi ul {
+    position: relative;
+}
+
+.navi ul ul {      
+    background: #5f6975; 
+    border-radius: 0px; 
+    padding: 0;
+    position: absolute; 
+    top: 100%;
+    width:50%;
+    margin-left:-25%;
+    z-index:999; 
+}
+
+.navi ul ul li {
+    width:100%;  
+    line-height: 25px;
+    font-size: 1.0em;
+    display: block;
+}
+
+.navi ul ul li:first-child {
+    width:100%;
+    line-height: 25px;
+    font-size: 1.0em;
+    display: block;
+}
+                     
+.navi ul ul li a{
+    display: inline-block;  
+    color: white;
+    text-decoration: none;
+    width: 100%;
+    height:100%;
+}
+
+.navi ul ul li a:hover{
+    margin-left: 0px !important;
+    text-decoration: none;
+    color: black;
+    background-color: #fff;
+    border-radius:0 !important;
+    margin-right:0px !important;
+}
+
+.navi ul ul li a.active {
+    margin-left: 0px !important;
+    text-decoration: none;
+    color: black;
+    background-color: #fff;
+    border-radius:0 !important;
+    margin-right:0px !important;
+   
+}
+
+/*resolves leaflet image max-width limitations for leaflet version 0.7.X*/
+.leaflet-container img.leaflet-image-layer {
+    max-width: none !important;
+}
+
