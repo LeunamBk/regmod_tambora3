@@ -9,14 +9,19 @@ use app\controllers\ControllerBase;
 
 class UpdateController extends ControllerBase
 {
-    /*
-        public function actionUpdateapp(){
 
+    public function actionUpdateapp()
+    {
+
+        // only update if migrations are finished
+        if(Updater::checkIfMigrationsFinished()) {
+
+            // get events wich has changed or are new
             $updateDateArray = Updater::checkForUpdatedData();
 
             Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
-            if($updateDateArray){
+            if ($updateDateArray) {
 
                 // delete existing reconstructed model data for updated events
                 Updater::deleteModelData($updateDateArray);
@@ -29,10 +34,11 @@ class UpdateController extends ControllerBase
 
                 return true;
 
-            };
-
-            return false;
-
+            }
         }
-    */
+
+        return false;
+
+    }
 }
+

@@ -208,8 +208,6 @@ class Updater{
         self::deleteFromUpdateRegister($dataIdArray['ids']);
     }
 
-
-
     public function reconstructUpdate($datesArray){
 
         $years = [];
@@ -226,7 +224,7 @@ class Updater{
         $regmodR = $modulePath."/modules/regmod/assets/R/regmodR/R/regmod/";
         $regmodRLogTmp = $modulePath."/data/regmod/log/mapCreateLogTmp.txt";
         $regmodRLog = $modulePath."/data/regmod/log/mapCreateLog.txt";
-        $tiffDataPath = $modulePath."/data/regmod/tiff";
+        $tiffDataPath = $modulePath."/modules/regmod/data/tmp";
         $reanalysisDataPath = $modulePath."/modules/regmod/data/CRU/cru_ts3.tmp.nc";
 
         $dbCred = self::getDbCredentials();
@@ -249,6 +247,28 @@ class Updater{
         self::updateEventStats($ids);
         self::updateStationStats($ids);
     }
-    
+
+    public function checkIfMigrationsFinished(){
+
+        $sql = "SELECT EXISTS (
+                  SELECT 1
+                  FROM pg_catalog.pg_class c
+                    JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+                    WHERE n.nspname = 'regmod'
+                    AND c.relname = 'statistics_events'
+                    AND c.relkind = 'r'    -- only tables
+                );";
+
+        $command = Yii::$app->db->createCommand($sql);
+        $exists = $command->execute();
+
+        if($exists['exists']){
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
 }
 ?>
