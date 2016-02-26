@@ -79,7 +79,7 @@ class ByRegion {
     {
 
         if($mode == 'all_data'){
-
+/*
             $sql = "SELECT 
                         ST_AsPNG(ST_ColorMap(
                             ST_SetBandNoDataValue(
@@ -89,17 +89,29 @@ class ByRegion {
                             ,0)
                         ,'bluered'))
                     FROM regmod.temperature_monthly_recon;";
+*/
+            $sql = "SELECT
+                        ST_AsPNG(ST_ColorMap(
+                            ST_SetBandNoDataValue(
+                                ST_TRANSFORM(
+                                    ST_Union(f.rast, 'MAX'),3857)
+                                ,0)
+                              ,'bluered'))
+                        FROM (SELECT ST_Union(rast,'COUNT') AS rast
+                        FROM regmod.temperature_monthly_recon
+                        UNION ALL
+                        SELECT st_makeemptyraster(rast) FROM regmod.temperature_cru_mean WHERE month = 1) AS f;";
 
         } elseif($mode == 'bbox_data'){
-
-            $sql = "SELECT 
+/*
+            $sql = "SELECT
                         ST_AsPNG(ST_ColorMap(
                             ST_SetBandNoDataValue(
                               ST_Transform(
                                 ST_Union(AA.rast,'COUNT')
                                   ,3857)
                             ,0)
-                        ,'bluered'))  
+                        ,'bluered'))
                     FROM regmod.temperature_monthly_recon_single AS AA 
                         INNER JOIN
                             events_timespace AS BB ON
@@ -113,6 +125,31 @@ class ByRegion {
                                     4326
                                 )
                     );";
+*/
+
+  $sql = "SELECT
+                        ST_AsPNG(ST_ColorMap(
+                            ST_SetBandNoDataValue(
+                                ST_TRANSFORM(
+                                    ST_Union(f.rast, 'MAX'),3857)
+                                ,0)
+                              ,'bluered'))
+                        FROM (SELECT ST_Union(rast,'COUNT') AS rast
+                    FROM regmod.temperature_monthly_recon_single AS AA
+                        INNER JOIN
+                            events_timespace AS BB ON
+                                AA.event_id = BB.event_id
+                    WHERE ST_Intersects(BB.geog_point,
+                                ST_MakeEnvelope(
+                                    ".$bbox[0]['lon'].",
+                                    ".$bbox[0]['lat'].",
+                                    ".$bbox[2]['lon'].",
+                                    ".$bbox[1]['lat'].",
+                                    4326
+                                )
+                    )
+                                            UNION ALL
+                        SELECT st_makeemptyraster(rast) FROM regmod.temperature_cru_mean WHERE month = 1) AS f;";
 
         } elseif($mode == 'timeframe_data') {
 

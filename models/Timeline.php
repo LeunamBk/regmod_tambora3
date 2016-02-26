@@ -43,8 +43,8 @@ class Timeline {
             $sql = "SELECT lookup.year, lookup.month, lookup.event_id, (ST_SummaryStats(KK.rast)).mean
                     FROM(
                         SELECT year, month, event_id
-                        FROM regmod.tambora_temperature_monthly
-                        WHERE ST_Intersects(geom, ST_MakeEnvelope(".$bbox[0]['lon'].",
+                        FROM events_timespace
+                        WHERE ST_Intersects(geog_point, ST_MakeEnvelope(".$bbox[0]['lon'].",
                                                                   ".$bbox[0]['lat'].",
                                                                   ".$bbox[2]['lon'].",
                                                                   ".$bbox[1]['lat'].", 

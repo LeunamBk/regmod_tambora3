@@ -65,9 +65,9 @@ class TileSelect {
             FROM
             regmod.temperature_monthly_recon_single AS dataRast
             INNER JOIN
-            regmod.tambora_temperature_monthly as dataPoint
+            events_timespace as dataPoint
             ON dataPoint.event_id = dataRast.event_id
-            WHERE ST_INTERSECTS(dataPoint.geom, 
+            WHERE ST_INTERSECTS(dataPoint.geog_point,
             ST_MakeEnvelope(".$bbox[0]['lon'].",
             ".$bbox[0]['lat'].",".$bbox[2]['lon'].",
             ".$bbox[1]['lat'].", 4326)) 

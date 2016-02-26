@@ -488,8 +488,7 @@ tr.highlight-info{
     text-decoration: none;
 }
 
-@media screen and (min-width: 1000px) {
-    
+
 .navi ul li:first-child {
     width: 25%;
     border-bottom: none;
@@ -527,7 +526,7 @@ margin: 0 auto;
 background-color: #444;
 }
 */
-}
+
 
 
 .navi ul li a { 
@@ -565,12 +564,18 @@ background-color: #444;
     font-size: 1.0em;
     display: block;
 }
+.navi ul ul li:nth-child(2) {
+
+    border-bottom: 1px solid #f5f5f5;
+}
 
 .navi ul ul li:first-child {
     width:100%;
     line-height: 25px;
     font-size: 1.0em;
     display: block;
+    border-bottom: 1px solid #f5f5f5;
+
 }
                      
 .navi ul ul li a{

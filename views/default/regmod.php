@@ -66,6 +66,7 @@ Yii::$app->view->registerJs('var phpTilesData = '. $tileSelectData,  \yii\web\Vi
                         <ul>
                             <li class="offsetByIndex"><a href="#">Reanalysis offset by Index</a></li>
                             <li class="offsetByStation"><a href="#">Temperature offset by climate station</a></li>
+                            <li class="aboutRegmod"><a href="#">About</a></li>
                         </ul>
                     </li>
                 </ul>

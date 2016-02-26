@@ -450,7 +450,7 @@ var dashboardMenuView = {
 
         // add dashboard menu functionality
         $('#dashboard').hide();
-        $('#dash-menu').hide();
+        $('.dash-menu').hide();
 
         $('.navi li a').click(function() {
 
@@ -461,11 +461,13 @@ var dashboardMenuView = {
                 $('#advancedSelect').hide();
                 $('#timeline').hide();
                 $('#map').hide();
+                $('#aboutRegmod-text').hide();
+                $('.about-menu').hide();
 
                 dashboardController.renderOffByStation();
 
                 $('#dashboard').show();
-                $('#dash-menu').show();
+                $('.dash-menu').show();
                 $('#statByIdx').show();
                 $('#statByMonth').show();
                 $('#statByLoc').show();
@@ -483,18 +485,44 @@ var dashboardMenuView = {
                 // addCruByIdx();
                 dashboardController.renderOffByIndex();
                 $('#dashboard').show();
-                $('#dash-menu').show();
+                $('.dash-menu').show();
                 $('#cruByIdx').show();
                 $('#statByIdx').hide();
                 $('#statByMonth').hide();
                 $('#statByLoc').hide();
+                $('#aboutRegmod-text').hide();
+                $('.about-menu').hide();
+
                 // toggle text
                 $('.byStation-text').hide();
                 $('.byEvents-text').show();
 
+            }  else if ($(this).parent().attr('class') == 'aboutRegmod') {
+                $('.dashboard a').first().attr('class','active');
+                $('#advancedSelect').hide();
+                $('#timeline').hide();
+                $('#map').hide();
+                $('#statByIdx').hide();
+                $('#statByMonth').hide();
+                $('#statByLoc').hide();
+                $('.byStation-text').hide();
+                $('#cruByIdx').hide();
+                $('.byEvents-text').hide();
+                $('.dash-menu').hide();
+                $('#dashboard').show();
+                $('#aboutRegmod-text').show();
+                $('.about-menu').show();
+
+                var main = "<center><h3>Regmod: a model for the reconstruction of monthly temperature distributions based on historical sources</h3></center>";
+                var sub = "<center><p></p><i>written by Manuel Beck, source code is available on <a href='https://github.com/LeunamBk/regmod_tambora3.git'>github</a></i></p></center>";
+                $('header').empty();
+                $('header').append(main, sub);
+
+
             } else {
                 $('#dashboard').hide();
-                $('#dash-menu').hide();
+                $('.dash-menu').hide();
+                $('.about-menu').hide();
             }
         });
 
@@ -525,303 +553,3 @@ $(function(){
     dashboardController.init();
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- scatterplot Base function -->
-function scatterPlot(data,dclass,xAxLab, evidLookUp, locNameLU){
-
-    // scatterplot tooltip function
-    var oldidx = 0;
-    function blubbel(parent, idx){
-        if(oldidx != idx){
-            if(parent == 'statByIdx'){
-                if(oldidx != 0){
-                    var point = statByMonthChart.series[0].data[oldidx];
-                    point.select();
-                    var point = statByLocChart.series[0].data[oldidx];
-                    point.select();
-                }
-                var point = statByMonthChart.series[0].data[idx];
-                point.select();
-                point.graphic.toFront();
-                var point = statByLocChart.series[0].data[idx];
-                point.select();
-                point.graphic.toFront();
-            } else if(parent == 'statByMonth'){
-                if(oldidx != 0){
-                    var point = statByLocChart.series[0].data[oldidx];
-                    point.select();
-                    var point = statByIdxChart.series[0].data[oldidx];
-                    point.select();
-                }
-                var point = statByLocChart.series[0].data[idx];
-                point.select();
-                point.graphic.toFront();
-                var point = statByIdxChart.series[0].data[idx];
-                point.select();
-                point.graphic.toFront();
-            } else if(parent == 'statByLoc'){
-                if(oldidx != 0){
-                    var point = statByMonthChart.series[0].data[oldidx];
-                    point.select();
-                    var point = statByIdxChart.series[0].data[oldidx];
-                    point.select();
-                }
-                var point = statByMonthChart.series[0].data[idx];
-                point.select();
-                point.graphic.toFront();
-                var point = statByIdxChart.series[0].data[idx];
-                point.select();
-                point.graphic.toFront();
-            }
-        }
-        oldidx = idx;
-    };
-
-    // scatterplot definition
-    var chart;
-    var options = {
-        chart: {
-            renderTo: dclass,
-            type: 'scatter',
-            zoomType: 'xy'
-        },
-        title: {
-            text: dclass
-        },
-        xAxis: {
-            title: {
-                enabled: true,
-                text: xAxLab
-            },
-            startOnTick: true,
-            endOnTick: true,
-            showLastLabel: true,
-            type: "category"
-        },
-        yAxis: {
-            title: {
-                text: 'offset Celsius'
-            }
-        },
-        legend: {
-            enabled: false
-        },
-        tooltip: {
-            useHTML: true,
-            padding: 0,
-            formatter: function () {
-                if (dclass != 'cruByIdx') {
-                    var chart = this.series.chart,
-                        index = this.y;
-                    if (typeof this.point.index !== 'undefined') {
-                        blubbel(dclass, this.point.index);
-                    }
-                    if (dclass != 'statByLoc') {
-                        this.point.graphic.toFront();
-                        return 'X: ' + this.x.toFixed(2) + '<br/>offset<i></i>: ' + this.y.toFixed(2) + '<br/>evid: ' + evidLookUp[this.point.index];
-                    } else {
-                        return 'location: ' + this.x + '<br/>offset: ' + this.y.toFixed(2) + '<br/>evid: ' + evidLookUp[this.point.index];
-                    }
-
-                } else {
-                    return false;
-                }
-            }
-        },
-        plotOptions: {
-            /* spline: {
-             turboThreshold: 999999
-             },*/
-            scatter: {
-                marker: {
-                    radius: 4,
-                    states: {
-                        hover: {
-                            enabled: true,
-                            lineColor: 'rgb(100,100,100)'
-                        }
-                    }
-                },
-                states: {
-                    hover: {
-                        marker: {
-                            enabled: false
-                        }
-                    }
-                }
-            }
-        },
-        series:[{
-            name: dclass,
-            color: 'rgba(0, 0, 0, .5)',
-            data: data
-        }]
-    };
-
-    if(dclass == 'statByLoc'){
-        options.plotOptions.scatter.marker.radius = 3;
-    }
-
-    chart = new Highcharts.Chart(options);
-
-    if(dclass == 'statByLoc'){
-        chart.xAxis[0].setCategories(locNameLU);
-    }
-
-    return chart;
-}
-
-
-function boxplot(data, dclass, xAxLab,scatter) {
-
-    // scatterplot definition
-    var chart;
-    var options = {
-
-        chart: {
-            renderTo: dclass,
-            type: 'boxplot',
-            zoomType: 'xy'
-        },
-
-        title: {
-            text: dclass
-        },
-        xAxis: {
-            title: {
-                enabled: true,
-                text: xAxLab
-            },
-            endOnTick: true,
-            showLastLabel: true,
-            type: "category",
-            categories : ['-3','-2','-1','0','1','2','3']
-
-        },
-        yAxis: {
-            title: {
-                text: 'offset Celsius'
-            }
-        },
-        legend: {
-            enabled: false
-        },
-
-        series: [
-            {
-                name: dclass,
-                // ['low', 'q1', 'median', 'q3', 'high']
-                data: [
-                    [-3, data[-3].min, data[-3].q1, data[-3].median, data[-3].q3, data[-3].max],
-                    [-2, data[-2].min, data[-2].q1, data[-2].median, data[-2].q3, data[-2].max],
-                    [-1, data[-1].min, data[-1].q1, data[-1].median, data[-1].q3, data[-1].max],
-                    [0, data[0].min, data[0].q1, data[0].median, data[0].q3, data[0].max],
-                    [1, data[1].min, data[1].q1, data[1].median, data[1].q3, data[1].max],
-                    [2, data[2].min, data[2].q1, data[2].median, data[2].q3, data[2].max],
-                    [3, data[3].min, data[3].q1, data[3].median, data[3].q3, data[3].max]
-                ],
-                color: 'rgba(0, 0, 0, .5)',
-                tooltip: {
-                    headerFormat: '<em>Thermal Indice: {point.key}</em><br/>'
-                }
-            },{
-                name: 'Event',
-                color: Highcharts.getOptions().colors[0],
-                type: 'scatter',
-                data: scatter,
-                marker: {
-                    fillColor: 'white',
-                    lineWidth: 1,
-                    lineColor: Highcharts.getOptions().colors[0]
-                },
-                tooltip: {
-                    pointFormat: 'Observation: {point.y}'
-                }
-            }]
-    };
-
-    function scatterTooltip() {
-        if (dclass != 'cruByIdx') {
-            var chart = this.series.chart,
-                index = this.y;
-            if (typeof this.point.index !== 'undefined') {
-                blubbel(dclass, this.point.index);
-            }
-            if (dclass != 'statByLoc') {
-                this.point.graphic.toFront();
-                return 'X: ' + this.x.toFixed(2) + '<br/>offset<i></i>: ' + this.y.toFixed(2) + '<br/>evid: ' + evidLookUp[this.point.index];
-            } else {
-                return 'location: ' + this.x + '<br/>offset: ' + this.y.toFixed(2) + '<br/>evid: ' + evidLookUp[this.point.index];
-            }
-
-        } else {
-            return false;
-        }
-    }
-
-
-    return new Highcharts.Chart(options);
-
-}
-
-
-
-function textStatistics(stats){
-    console.log(stats)
-    var avgIndex = stats['avgIndex'];
-    $('#avg-n3').text(avgIndex[-3]);
-    $('#avg-n2').text(avgIndex[-2]);
-    $('#avg-n1').text(avgIndex[-1]);
-    $('#avg-p1').text(avgIndex[1]);
-    $('#avg-p2').text(avgIndex[2]);
-    $('#avg-p3').text(avgIndex[3]);
-
-    var avgRange = stats['avgSignedIndex'];
-    $('#range-minn').text(avgRange['negative'][0]);
-    $('#range-maxn').text(avgRange['negative'][1]);
-    $('#range-minp').text(avgRange['positive'][0]);
-    $('#range-maxp').text(avgRange['positive'][1]);
-}
-
-<!-- INIT CHARTS -->
-
-<!-- crufByIdx -->
-function addCruByIdx(){
-    var dashboardData = $('#dashboardWidget-content').attr('data-url');
-    $.getJSON(dashboardData, null,
-        function(res){
-            textStatistics(res['stats']);
-            boxplot(res['plots']['boxplot'],'cruByIdx','index value', res['plots']['scatterplot']);
-            //      scatterPlot(res['plots']['scatterplot'],'cruByIdx','index value');
-        }
-    );
-}
-
-

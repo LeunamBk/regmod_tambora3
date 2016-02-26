@@ -26,7 +26,8 @@ class RegmodDashboardAsset extends AssetBundle
         'js/highcharts.js',
         'js/highcharts-more.js',
         'js/exporting.js',
-        'js/dashboard.js'
+        'js/dashboard.js',
+        'js/utils.js'
     ];
     public $depends = [
         'yii\web\JqueryAsset'

@@ -204,7 +204,9 @@ var coverageRasterView = {
 
                 var imageBounds = [[dim['ymax'], dim['xmax']], [dim['ymin'], dim['xmin']]];  //  ymax, xmax, ymin, xmin
 
-                var coverageMap = L.imageOverlay(coverageRaster.data, imageBounds, {opacity: 0.7});
+
+
+                var coverageMap = L.imageOverlay(coverageRaster.data, mapController.getGlobalImageBounds(), {opacity: 0.7});
 
                 // save raster layer
                 mapController.setMapLayerModel('coverageMap', coverageMap);

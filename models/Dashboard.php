@@ -92,16 +92,7 @@ class Dashboard {
                     'eventMean' => floatval($line['event_mean']),
                     'cruMean' => floatval($line['cru_mean'])
                 ));
-
-            /*
-            // aggregate data for boxplot statistics
-            if(array_key_exists($indice, $boxplotData)){
-                array_push($boxplotData[$indice], $indiceValue);
-            } else {
-                $boxplotData[$indice] = array($indiceValue);
-            }
-
-            */
+            
         }
 
         // calculate boxplot data
